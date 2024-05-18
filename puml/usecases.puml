@@ -18,17 +18,9 @@ usecase "Search a restaurant" as Search1
 usecase "Find open restaurant" as Search2
 usecase "Show open restaurant" as Search3
 usecase "View menu" as Search4
-}
-
-rectangle Order_managemnt{
-usecase "Add item" as Order1
-usecase "Remove item" as Order2
-usecase "Place order" as Order3
-usecase "Fulfil order" as Order4
-usecase "Cancel order" as Order5
-usecase "Pay for order" as Order6
-usecase "View order" as Order7
-usecase "Save order" as Order8
+usecase "Show menu" as Search5
+usecase "Select Items" as Search6
+usecase "Show Total" as Search7
 }
 
 rectangle User_management {
@@ -40,9 +32,8 @@ usecase "Register" as Reg1
 }
 
 Restaurant -up--> Reg1
-Restaurant -up--> Order4
-Restaurant -up--> Order5
-Restaurant -up--> Order7
+Restaurant -up--> Reg3
+Restaurant -up--> Reg2
 Restaurant -up--> AddMenuItem
 Restaurant -up--> RemMenuItem
 Restaurant -up--> SetPrice
@@ -50,16 +41,13 @@ Restaurant -up--> TimingSet
 
 SearchEngine -down--> Search2
 SearchEngine -down--> Search3
-SearchEngine -down--> Order8
+SearchEngine -down--> Search5
+SearchEngine -down--> Search7
 
 User -down--> Reg1
 User -down--> Search1
 User -down--> Search4
-User -down--> Order1
-User -down--> Order2
-User -down--> Order3
-User -down--> Order6
-User -down--> Order7
+User -down--> Search6
 
 
 
