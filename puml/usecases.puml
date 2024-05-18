@@ -17,6 +17,7 @@ rectangle Catalogue{
 usecase "Search a restaurant" as Search1
 usecase "Find open restaurant" as Search2
 usecase "Show open restaurant" as Search3
+usecase "View menu" as Search4
 }
 
 rectangle Order_managemnt{
@@ -27,32 +28,41 @@ usecase "Fulfil order" as Order4
 usecase "Cancel order" as Order5
 usecase "Pay for order" as Order6
 usecase "View order" as Order7
+usecase "Save order" as Order8
 }
 
 rectangle User_management {
+usecase "Add address" as Reg2
+usecase "Update address" as Reg3
 usecase "Register" as Reg1
 }
 
 }
 
-User --> Reg1
-User --> Search1
-User --> Order1
-User --> Order2
-User --> Order3
-User --> Order6
-User --> Order7
+Restaurant -up--> Reg1
+Restaurant -up--> Order4
+Restaurant -up--> Order5
+Restaurant -up--> Order7
+Restaurant -up--> AddMenuItem
+Restaurant -up--> RemMenuItem
+Restaurant -up--> SetPrice
+Restaurant -up--> TimingSet
 
-Restaurant --> Reg1
-Restaurant --> Order4
-Restaurant --> Order5
-Restaurant --> Order7
-Restaurant --> AddMenuItem
-Restaurant --> RemMenuItem
-Restaurant --> SetPrice
-Restaurant --> TimingSet
+SearchEngine -down--> Search2
+SearchEngine -down--> Search3
+SearchEngine -down--> Order8
 
-SearchEngine --> Search2
-SearchEngine --> Search3
+User -down--> Reg1
+User -down--> Search1
+User -down--> Search4
+User -down--> Order1
+User -down--> Order2
+User -down--> Order3
+User -down--> Order6
+User -down--> Order7
+
+
+
+
 
 @enduml
