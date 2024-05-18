@@ -1,8 +1,58 @@
 @startuml
-actor User
-participant catalog
+left to right direction
+actor User <<Human>>
+actor Restaurant
+actor SearchEngine <<Application>>
 
-User -> catalog : show hotels
-catalog --> User: list of hotels
+rectangle Restaurant_Finder{
+
+rectangle Restaurant_managemnt{
+usecase "Add menu item" as AddMenuItem
+usecase "Set Item price" as SetPrice
+usecase "Remove menu item" as RemMenuItem
+usecase "Set open timing" as TimingSet
+}
+
+rectangle Catalogue{
+usecase "Search a restaurant" as Search1
+usecase "Find open restaurant" as Search2
+usecase "Show open restaurant" as Search3
+}
+
+rectangle Order_managemnt{
+usecase "Add item" as Order1
+usecase "Remove item" as Order2
+usecase "Place order" as Order3
+usecase "Fulfil order" as Order4
+usecase "Cancel order" as Order5
+usecase "Pay for order" as Order6
+usecase "View order" as Order7
+}
+
+rectangle User_management {
+usecase "Register" as Reg1
+}
+
+}
+
+User --> Reg1
+User --> Search1
+User --> Order1
+User --> Order2
+User --> Order3
+User --> Order6
+User --> Order7
+
+Restaurant --> Reg1
+Restaurant --> Order4
+Restaurant --> Order5
+Restaurant --> Order7
+Restaurant --> AddMenuItem
+Restaurant --> RemMenuItem
+Restaurant --> SetPrice
+Restaurant --> TimingSet
+
+SearchEngine --> Search2
+SearchEngine --> Search3
 
 @enduml
