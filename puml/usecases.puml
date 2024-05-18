@@ -1,0 +1,8 @@
+@startuml
+actor User
+participant catalog
+
+User -> catalog : show hotels
+catalog --> User: list of hotels
+
+@enduml
