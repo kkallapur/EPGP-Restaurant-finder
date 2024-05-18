@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+actor User <<Human>>
+actor Restaurant
+actor SearchEngine <<Application>>
+
+rectangle Restaurant_Finder{
+
+rectangle Restaurant_managemnt{
+usecase "Add menu item" as AddMenuItem
+usecase "Set Item price" as SetPrice
+usecase "Remove menu item" as RemMenuItem
+usecase "Set open timing" as TimingSet
+}
+
+rectangle Catalogue{
+usecase "Search a restaurant" as Search1
+usecase "Find open restaurant" as Search2
+usecase "Show open restaurant" as Search3
+usecase "View menu" as Search4
+usecase "Show menu" as Search5
+usecase "Select Items" as Search6
+usecase "Show Total" as Search7
+}
+
+rectangle User_management {
+usecase "Add address" as Reg2
+usecase "Update address" as Reg3
+usecase "Register" as Reg1
+}
+
+}
+
+Restaurant -up--> Reg1
+Restaurant -up--> Reg3
+Restaurant -up--> Reg2
+Restaurant -up--> AddMenuItem
+Restaurant -up--> RemMenuItem
+Restaurant -up--> SetPrice
+Restaurant -up--> TimingSet
+
+SearchEngine -down--> Search2
+SearchEngine -down--> Search3
+SearchEngine -down--> Search5
+SearchEngine -down--> Search7
+
+User -down--> Reg1
+User -down--> Search1
+User -down--> Search4
+User -down--> Search6
+
+
+
+
+
+@enduml
