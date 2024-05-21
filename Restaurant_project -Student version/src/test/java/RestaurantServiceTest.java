@@ -8,7 +8,7 @@ class RestaurantServiceTest {
 
     private static final RestaurantService restaurantService = new RestaurantService();
     private static Restaurant restaurantTestObj;
-    //REFACTOR ALL THE REPEATED LINES OF CODE
+
     @BeforeEach
     public void setUp() {
         LocalTime openingTime = LocalTime.parse("10:30:00");
@@ -21,13 +21,11 @@ class RestaurantServiceTest {
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
-        //WRITE UNIT TEST CASE HERE
         final String restaurantName = "Amelie's cafe";
         Restaurant foundRestaurant = restaurantService.findRestaurantByName(restaurantName);
         assertEquals(restaurantName, foundRestaurant.getName());
     }
 
-    //You may watch the video by Muthukumaran on how to write exceptions in Course 3: Testing and Version control: Optional content
     @Test
     public void searching_for_non_existing_restaurant_should_throw_exception() {
         assertThrows(restaurantNotFoundException.class,()-> restaurantService.findRestaurantByName("Pantry d'or"));
